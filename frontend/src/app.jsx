@@ -1,12 +1,13 @@
 import { useState } from "react";
-import 'app.css'
-
-const app = () => {
+import './App.css'
+import Res from "./components/Res";
+const App = () => {
     return(
         <>
             <h1>Olá noteTec</h1>
+            <Res/>
         </>
     )
 }
 
-export default app
+export default App
