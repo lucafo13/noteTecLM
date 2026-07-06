@@ -1,0 +1,28 @@
+
+@import 'tailwindcss';
+.main{
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+.base{
+    display: flex;
+    width: 50%;
+    height: 80%;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 50px;
+}
+
+
+.input{
+    width: 100%;
+    background-color: greenyellow;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+}
