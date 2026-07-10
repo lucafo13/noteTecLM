@@ -3,17 +3,19 @@ import { PiHandWavingLight } from "react-icons/pi";
 import { LuCloudUpload } from "react-icons/lu";
 import { motion } from "framer-motion";
 import { FaRegFilePdf } from "react-icons/fa";
+import Card from "./Card";
 
 import axios from "axios";
 import Markdown from "react-markdown";
 
-const Hero = () => {
+const Hero = ({ DarkMode }) => {
   const alinaI = "flex items-center gap-3";
-  const [Nome, SetNome] = useState("Visitante");
+  const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
   const [dragano, Tadragano] = useState(false);
   const [resu, setResu] = useState("");
   const [car, setCar] = useState(false);
+  const [pdf, setPdf] = useState(null)
 
   let aviso = "Arraste um arquivo aqui...";
 
@@ -29,7 +31,8 @@ const Hero = () => {
       try {
         const res = await axios.post("http://localhost:3000/resu", formData);
         setResu(res.data.texto);
-        console.log(res.data.texto)
+        setPdf(res.data.PDF)
+        console.log(res.data.PDF)
         baixa(res.data.texto)
         alert('deu bom fml')
       } catch (error) {
@@ -92,13 +95,13 @@ const Hero = () => {
 
   return (
     <>
-      <section className="font-sans p-5">
+      <section className={DarkMode ? "font-sans p-5" : "font-sans p-5"}>
         <article className={alinaI}>
-          <h1 className={` text-4xl font-bold`}> Olá, {Nome}</h1>
-          <PiHandWavingLight className="text-4xl" />
+          <h1 className={!DarkMode ? ` text-4xl font-bold` : ` text-4xl font-bold text-white`}> Olá, {Nome}</h1>
+          <PiHandWavingLight className={!DarkMode ? "text-4xl" : "text-white text-4xl"} />
         </article>
         <div className="py-4 pr-30">
-          <h2 className="text-2xl">
+          <h2 className={!DarkMode ? "text-2xl" : "text-2xl text-white"}>
             Envie aqui um PDF Para que possamos fazer um resumo sobre a matéria,
             possíveis questões e uma analise de acordo com as provas dos
             professores e garantir sua nota.
@@ -112,9 +115,10 @@ const Hero = () => {
             onDragLeave={saindoDrag}
             onDragEnter={seguranoAcima}
             htmlFor="file"
-            className={`border-dashed gap-2 p-10 flex items-center cursor-pointer shadow-sm hover:bg-primary-400 transition-colors duration-500  py-25 bg-primary-50 justify-center text-4xl flex-col pr-10 border-primary border-2 rounded-4xl ${
-              dragano ? "bg-primary-300" : "bg-primary-50 hover:bg-primary-400"
-            }`}
+            className={!DarkMode ? `border-dashed gap-2 p-10 flex items-center cursor-pointer shadow-sm hover:bg-primary-400 transition-colors duration-500  py-25 bg-primary-50 justify-center text-4xl flex-col pr-10 border-primary border-2 rounded-4xl ${
+              dragano ? "bg-primary-300" : "bg-primary-50 hover:bg-primary-400" 
+            }` : `border-dashed gap-2 p-10 flex items-center cursor-pointer shadow-sm hover:bg-card-dark transition-colors duration-500  py-25 bg-surface-dark justify-center text-white text-4xl flex-col pr-10 border-primary border-2 rounded-4xl ${
+              dragano ? "bg-card-dark" : "bg-primary-50 hover:bg-primary-400" }`}
           >
             <input
               type="file"
@@ -144,6 +148,12 @@ const Hero = () => {
             {car ? <p>Carregando...</p> : <p>Nada ainda</p> }
           </label>
         </motion.div>
+        <br />
+        <h1 className={!DarkMode ? "text-4xl font-bold transition-colors" : "text-4xl font-bold text-white"}>Envios recentes...</h1>
+        <div className="flex gap-10">
+                <Card DarkMode={DarkMode} descri={"Materia de ingles"} titulo={"Seu resumo MD"}/>
+                <Card DarkMode={DarkMode} descri={"Materia de ingles"} titulo={"Seu resumo MD"}/>
+        </div>
       </section>
     </>
   );

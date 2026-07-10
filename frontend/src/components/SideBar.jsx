@@ -10,7 +10,7 @@ import {
 import { IoIosMore } from "react-icons/io";
 import { IconBase } from "react-icons/lib";
 
-const SideBar = (prop) => {
+const SideBar = ({ DarkMode }) => {
     const Ativo = "bg-primary-hover text-white hover: bg-primary-hover"
   const Links = [
     { icon: LuNotebookPen, text: "Resumos", Ativo: Ativo},
@@ -20,13 +20,12 @@ const SideBar = (prop) => {
   ];
   
   const bordaS = "border-slate-200 shadow-sm";
-  const NavLink =
-    "font-sans rounded-lg items-center flex px-5 py-4 hover:bg-primary-500 transition-all hover:text-white gap-3 cursor-pointer";
+  const NavLink =  DarkMode ? "font-sans rounded-lg text-white items-center flex px-5 py-4 hover:bg-primary-500 transition-all hover:text-white gap-3 cursor-pointer" :  "font-sans rounded-lg items-center flex px-5 py-4 hover:bg-primary-500 transition-all hover:text-white gap-3 cursor-pointer" 
   return (
     <>
-      <aside className="shrink-0 left-0 font-sans top-0 h-screen w-64 border-r border-slate-200 shadow-sm bg-white flex flex-col p-1">
+      <aside className={DarkMode ? "shrink-0 left-0 bg-background-dark font-sans top-0 h-screen w-64 border-r border-border-darl shadow-sm  flex flex-col p-1" : "shrink-0 left-0 font-sans top-0 h-screen w-64 border-r border-slate-200 shadow-sm bg-white flex flex-col p-1"}>
         <div className="p-6 mb-3 flex gap-2 ">
-          <h1 className="text-3xl  text-black  font-bold ">NoteTec </h1>
+          <h1 className={DarkMode ? "text-3xl  text-white  font-bold" : "text-3xl  text-black  font-bold "}>NoteTec </h1>
           <h1 className="text-primary font-bold text-3xl">LM</h1>
         </div>
         <nav className="flex flex-wrap flex-col gap-2">
@@ -37,7 +36,7 @@ const SideBar = (prop) => {
             </a>
           ))}
         </nav>
-        <div className="flex flex-col flex-wrap mt-auto gap-2 p-1 border-t border-slate-200 ">
+        <div className={ !DarkMode ? "flex flex-col flex-wrap mt-auto gap-2 p-1 border-t border-slate-200 " : "flex flex-col flex-wrap mt-auto gap-2 p-1 border-t border-border-dark "}>
           <a
             href=""
             className={NavLink}
