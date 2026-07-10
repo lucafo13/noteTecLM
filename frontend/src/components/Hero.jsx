@@ -16,7 +16,46 @@ const Hero = ({ DarkMode }) => {
   const [resu, setResu] = useState("");
   const [car, setCar] = useState(false);
   const [pdf, setPdf] = useState(null)
+  const [err, serER] = useState(false)
 
+  let men = "Nada ainda..."
+
+  if(car){
+    men = "carregando..."
+  } else if(err){
+    men = "Falha !! alta demanda"
+  } else {
+    men = "Nada ainda"
+  }
+
+
+
+  const uploadBase = `
+border-2 border-dashed
+rounded-4xl
+flex flex-col items-center justify-center
+gap-2
+p-10 py-25 pr-10
+cursor-pointer
+transition-all duration-300
+text-4xl
+`;
+const uploadTheme = DarkMode
+  ? `
+    bg-card-dark
+    text-white
+    border-primary-600
+    hover:bg-[#28243a]
+  `
+  : `
+    bg-primary-50
+    text-ink
+    border-primary
+    hover:bg-primary-100
+  `;
+  const uploadDrag = dragano
+  ? "scale-[1.02] border-primary-400"
+  : "";
   let aviso = "Arraste um arquivo aqui...";
 
   
@@ -35,10 +74,14 @@ const Hero = ({ DarkMode }) => {
         console.log(res.data.PDF)
         baixa(res.data.texto)
         alert('deu bom fml')
+        serER(false)
       } catch (error) {
+        serER(true)
         return alert("deu pau");
+
       } finally {
         setCar(false);
+        
       }
     }
   
@@ -115,10 +158,7 @@ const Hero = ({ DarkMode }) => {
             onDragLeave={saindoDrag}
             onDragEnter={seguranoAcima}
             htmlFor="file"
-            className={!DarkMode ? `border-dashed gap-2 p-10 flex items-center cursor-pointer shadow-sm hover:bg-primary-400 transition-colors duration-500  py-25 bg-primary-50 justify-center text-4xl flex-col pr-10 border-primary border-2 rounded-4xl ${
-              dragano ? "bg-primary-300" : "bg-primary-50 hover:bg-primary-400" 
-            }` : `border-dashed gap-2 p-10 flex items-center cursor-pointer shadow-sm hover:bg-card-dark transition-colors duration-500  py-25 bg-surface-dark justify-center text-white text-4xl flex-col pr-10 border-primary border-2 rounded-4xl ${
-              dragano ? "bg-card-dark" : "bg-primary-50 hover:bg-primary-400" }`}
+             className={`${uploadBase} ${uploadTheme} ${uploadDrag}`}
           >
             <input
               type="file"
@@ -145,7 +185,7 @@ const Hero = ({ DarkMode }) => {
                       : "Arrasta aqui"}
             </p>
                 <br />
-            {car ? <p>Carregando...</p> : <p>Nada ainda</p> }
+            <p>{men}</p>
           </label>
         </motion.div>
         <br />

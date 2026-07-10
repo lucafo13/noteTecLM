@@ -23,7 +23,7 @@ const SideBar = ({ DarkMode }) => {
   const NavLink =  DarkMode ? "font-sans rounded-lg text-white items-center flex px-5 py-4 hover:bg-primary-500 transition-all hover:text-white gap-3 cursor-pointer" :  "font-sans rounded-lg items-center flex px-5 py-4 hover:bg-primary-500 transition-all hover:text-white gap-3 cursor-pointer" 
   return (
     <>
-      <aside className={DarkMode ? "shrink-0 left-0 bg-background-dark font-sans top-0 h-screen w-64 border-r border-border-darl shadow-sm  flex flex-col p-1" : "shrink-0 left-0 font-sans top-0 h-screen w-64 border-r border-slate-200 shadow-sm bg-white flex flex-col p-1"}>
+      <aside className={DarkMode ? "shrink-0 left-0 bg-dark-sidebar font-sans top-0 h-screen w-64 border-r border-border-dark shadow-sm  flex flex-col p-1" : "shrink-0 left-0 font-sans top-0 h-screen w-64 border-r border-slate-200 shadow-sm bg-white flex flex-col p-1"}>
         <div className="p-6 mb-3 flex gap-2 ">
           <h1 className={DarkMode ? "text-3xl  text-white  font-bold" : "text-3xl  text-black  font-bold "}>NoteTec </h1>
           <h1 className="text-primary font-bold text-3xl">LM</h1>
