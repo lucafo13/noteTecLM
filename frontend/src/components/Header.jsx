@@ -19,7 +19,7 @@ export const Header = ({ DarkMode, setDarkMode   }) => {
 
     return(
         <>
-            <header className="top-0 flex ">
+            <header className="top-0 flex pb-2">
                 <div className="flex ml-auto gap-2 items-center">
                     {!DarkMode ? <MdOutlineLightMode className="text-lg" /> : <MdDarkMode className="text-lg text-white transition-colors " />}
                     <Switch checked={DarkMode} onCheckedChange={setDarkMode} className="cursor-pointer" />

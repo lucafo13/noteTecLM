@@ -8,12 +8,11 @@ import Card from "./Card";
 import axios from "axios";
 import Markdown from "react-markdown";
 
-const Hero = ({ DarkMode }) => {
+const Hero = ({ DarkMode, resumo, setResu }) => {
   const alinaI = "flex items-center gap-3";
   const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
   const [dragano, Tadragano] = useState(false);
-  const [resu, setResu] = useState("");
   const [car, setCar] = useState(false);
   const [pdf, setPdf] = useState(null)
   const [err, serER] = useState(false)
@@ -31,14 +30,16 @@ const Hero = ({ DarkMode }) => {
 
 
   const uploadBase = `
+  block
 border-2 border-dashed
 rounded-4xl
 flex flex-col items-center justify-center
 gap-2
-p-10 py-25 pr-10
+p-5 py-15 
 cursor-pointer
 transition-all duration-300
 text-4xl
+w-full  
 `;
 const uploadTheme = DarkMode
   ? `
@@ -71,13 +72,14 @@ const uploadTheme = DarkMode
         const res = await axios.post("http://localhost:3000/resu", formData);
         setResu(res.data.texto);
         setPdf(res.data.PDF)
-        console.log(res.data.PDF)
+        console.log(res.data.texto)
         baixa(res.data.texto)
-        alert('deu bom fml')
+        setResu(res.data.texto)
+     
         serER(false)
       } catch (error) {
         serER(true)
-        return alert("deu pau");
+        return ;
 
       } finally {
         setCar(false);
@@ -138,12 +140,12 @@ const uploadTheme = DarkMode
 
   return (
     <>
-      <section className={DarkMode ? "font-sans p-5" : "font-sans p-5"}>
+      <section className={DarkMode ? "font-sans p-2 w-4/5 max-h-screen overflow-y-auto" : "font-sans p-1 w-4/5 max-h-screen"}>
         <article className={alinaI}>
           <h1 className={!DarkMode ? ` text-4xl font-bold` : ` text-4xl font-bold text-white`}> Olá, {Nome}</h1>
           <PiHandWavingLight className={!DarkMode ? "text-4xl" : "text-white text-4xl"} />
         </article>
-        <div className="py-4 pr-30">
+        <div className="py-4 pr-10">
           <h2 className={!DarkMode ? "text-2xl" : "text-2xl text-white"}>
             Envie aqui um PDF Para que possamos fazer um resumo sobre a matéria,
             possíveis questões e uma analise de acordo com as provas dos
@@ -151,7 +153,7 @@ const uploadTheme = DarkMode
           </h2>
         </div>
         <br />
-        <motion.div className="pr-40">
+        <motion.div className="pr-10">
           <label
             onDragOver={seguranoAcima}
             onDrop={soltou}

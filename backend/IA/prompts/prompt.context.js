@@ -48,6 +48,9 @@ deve transparecer apenas pelo conteúdo e pelo tom da resposta, nunca ser declar
 
 ## Estrutura da resposta
 
+# titulo
+Apresente um titulo ao resumo de froma curta e direta, use # para deixar lo em destaque.
+
 # Resumo
 Apresente uma visão geral do conteúdo, com uma introdução que situe o tema dentro da 
 matéria. Mesmo sendo chamada de "resumo", esta seção deve extrair o MÁXIMO de detalhe 
