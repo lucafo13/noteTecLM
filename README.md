@@ -1,2 +1,4 @@
 # noteTecLM
-**Um projeto pessoal com o objetivo de  criar resumos e questões para estudos de provas**.
+**A solo project that may help you to pass in exams**.
+
+
