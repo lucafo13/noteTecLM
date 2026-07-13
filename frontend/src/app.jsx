@@ -7,22 +7,61 @@ import SideBar from "./components/SideBar";
 import Hero from "./components/Hero";
 import Header from "./components/Header";
 import { ResumoArea } from "#components/ResumoArea";
-
+import { IoChevronBack } from "react-icons/io5";
 const App = () => {
-   const [DarkMode, setDarkMode ] = useState(false)
+  const [DarkMode, setDarkMode] = useState(false);
   const [resumo, setResu] = useState("## Seu resumo sairá aqui...");
-
+  let [out, isOut] = useState(false);
+  let [show, setShow] = useState(true);
   return (
     <div className="flex max-h-screen">
       <SideBar DarkMode={DarkMode} />
-      <main className={!DarkMode ?  "flex-1 p-8 flex-col flex" : "flex-1 p-8 bg-background-dark flex flex-col"}>
-     
-       <Header DarkMode={DarkMode} setDarkMode={setDarkMode} />
+      <main
+        className={
+          !DarkMode
+            ? "flex-1 p-8 flex-col flex"
+            : "flex-1 p-8 bg-background-dark flex flex-col"
+        }
+      >
+        <Header DarkMode={DarkMode} setDarkMode={setDarkMode} />
         <div className="flex flex-row flex-1 overflow-hidden">
-       
-          
-        <Hero DarkMode={DarkMode} resumo={resumo} setResu={setResu}/>
-        <ResumoArea resumo={resumo} DarkMode={DarkMode}/>
+          <Hero
+            DarkMode={DarkMode}
+            resumo={resumo}
+            setResu={setResu}
+            out={out}
+          />
+          {show && (
+            <ResumoArea
+              resumo={resumo}
+              DarkMode={DarkMode}
+              out={out}
+              isOut={isOut}
+              fchar={() => setShow(false)}
+            />
+          )}
+          {!show && (
+            <button
+              onClick={() => setShow(true)}
+              className="
+              fixed
+              right-0
+              top-1/2
+              -translate-y-1/2
+              bg-primary
+              text-white
+              p-3
+              cursor-pointer
+              rounded-l-xl
+              shadow-lg
+              hover:scale-105
+              transition-all
+            "
+            >
+              <IoChevronBack size={22} />
+            </button>
+          )}
+        
         </div>
       </main>
     </div>

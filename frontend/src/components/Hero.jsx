@@ -8,7 +8,7 @@ import Card from "./Card";
 import axios from "axios";
 import Markdown from "react-markdown";
 
-const Hero = ({ DarkMode, resumo, setResu }) => {
+const Hero = ({ DarkMode, resumo, setResu, out }) => {
   const alinaI = "flex items-center gap-3";
   const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
@@ -18,7 +18,30 @@ const Hero = ({ DarkMode, resumo, setResu }) => {
   const [err, serER] = useState(false)
 
   let men = "Nada ainda..."
+  let uploadTexto = "";
+  // file?.name
+  //               ? file?.name
+  //               : dragano
+  //                 ? "Solta agora!"
+  //                 : "Arraste um PDF aqui..."
+  //                   ? "Arraste um PDF aqui..."
+  //                   : car
+  //                     ? "Fazendo resumo..."
+  //                     : "Arrasta aqui"
 
+  if(file?.name){
+    uploadTexto = file?.name
+  } else if(dragano){
+    uploadTexto = "Solte agora!"
+  } 
+   else if(!car){
+    uploadTexto = "Arraste Aqui"
+  } else if(!file?.name){
+    uploadTexto = "Arraste Aqui"
+  }
+   else {
+    uploadTexto = "Arraste aqui"
+  }
   if(car){
     men = "carregando..."
   } else if(err){
@@ -176,15 +199,7 @@ const uploadTheme = DarkMode
             )}
 
             <p className="text-center">
-              {file?.name
-                ? file?.name
-                : dragano
-                  ? "Solta agora!"
-                  : "Arraste um PDF aqui..."
-                    ? "Arraste um PDF aqui..."
-                    : car
-                      ? "Fazendo resumo..."
-                      : "Arrasta aqui"}
+              {uploadTexto}
             </p>
                 <br />
             <p>{men}</p>
