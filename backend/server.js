@@ -13,7 +13,6 @@ import { Groq } from "groq-sdk/client.js";
 
 
 /* import */
-
 import prompTmateria from "./IA/prompts/prompt.materia.js";
 import promptContext from "./IA/prompts/prompt.context.js";
 import upload from "./storage/multer.upload.js";
@@ -21,7 +20,12 @@ import { reqIa } from "./IA/ia.service.js";
 import { readPdf } from "./storage/pdfReader.js";
 import { errorCheck } from "./storage/error/error.js";
 import routerResu from "./routes/resumo.js";
+import routerUser from './routes/login/getUsers.js'
 import routerChat from './routes/chat.router.js'
+import routerCadastro from './routes/login/cadUser.js'
+import routerLogin from './routes/login/login.js'
+
+
 /* aura 67 express necessidades */
 const app = express();
 app.use(express.json());
@@ -29,13 +33,18 @@ app.use(cors());
 app.use(errorCheck)
 dotenv.config(); 
 
-
 const $PORT = process.env.PORT || 3000;
 
 /* rota */
-app.get("/", (req, res) => res.send("home"));
+app.get("/", (req, res  ) => res.send("home"));
 app.use('/', routerResu)
 app.use('/', routerChat)
+app.use('/', routerUser)
+app.use('/', routerCadastro)
+app.use('/', routerLogin)
+app.get('/health', (req, res) => {
+  return res.status(200).json({Saude:"Donde estas cr7????? cr7 donde estaaaas"})
+})
 
 
 app.listen($PORT, () => {

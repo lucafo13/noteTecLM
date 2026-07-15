@@ -8,7 +8,16 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import { ResumoArea } from "#components/ResumoArea";
 import { IoChevronBack } from "react-icons/io5";
+import axios from "axios";
+import { Attachment } from "#components/ui/attachment";
 const App = () => {
+
+
+  const saude = async () => {
+    const { data } = await axios.get('http://localhost:3000/health')
+    console.log(data)
+  }
+  saude()
   const [DarkMode, setDarkMode] = useState(false);
   const [resumo, setResu] = useState("## Seu resumo sairá aqui...");
   let [out, isOut] = useState(false);
@@ -23,6 +32,7 @@ const App = () => {
             : "flex-1 p-8 bg-background-dark flex flex-col"
         }
       >
+        
         <Header DarkMode={DarkMode} setDarkMode={setDarkMode} />
         <div className="flex flex-row flex-1 overflow-hidden">
           <Hero

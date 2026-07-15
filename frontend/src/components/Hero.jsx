@@ -209,7 +209,7 @@ const uploadTheme = DarkMode
         <h1 className={!DarkMode ? "text-4xl font-bold transition-colors" : "text-4xl font-bold text-white"}>Envios recentes...</h1>
         <div className="flex gap-10">
                 <Card DarkMode={DarkMode} descri={"Materia de ingles"} titulo={"Seu resumo MD"}/>
-                <Card DarkMode={DarkMode} descri={"Materia de ingles"} titulo={"Seu resumo MD"}/>
+                <Card DarkMode={DarkMode} descri={"Materia de Programação"} titulo={"Seu resumo MD"}/>
         </div>
       </section>
     </>

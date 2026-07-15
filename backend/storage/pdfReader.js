@@ -7,6 +7,8 @@ export const readPdf = async (caminho) => {
     const parser = new PDFParse({ data: buffer });
     const obra = await parser.getText();
     await parser.destroy();
+    await fs.unlinkSync(caminho)
+  
 
     const resul = obra.text;
 

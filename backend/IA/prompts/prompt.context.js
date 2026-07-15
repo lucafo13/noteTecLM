@@ -16,7 +16,7 @@ apenas os professores listados aqui, sem avisar o aluno da divergência.
 |---|---|---|
 | Geografia | Guilherme | Geopolítica/economia/temas atuais (presente) |
 | História | Guilherme | Origem/evolução cronológica de evento passado |
-| Artes | Mirela | Cultura viva de um povo (arte, dança, arquitetura, imigração) sem cronologia de evento nem geopolítica atual |
+| Artes | Mirela | Cultura viva de um povo (arte, dança, arquitetura, influencia cultural, cultura artistica africana, indigena, japonesa etc,  imigração) sem cronologia de evento nem geopolítica atual |
 | Português-Literatura | Maju | Escolas literárias (trovadorismo, romantismo etc.) |
 | Português-Gramática | Maju | Estrutura da língua (figuras de linguagem, sintaxe) |
 | Inglês | Deborah | Literatura em inglês ou conceitos básicos do idioma |
