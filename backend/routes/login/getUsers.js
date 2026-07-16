@@ -13,7 +13,8 @@ router.get('/users', async (req, res) => {
             id:true,
             nome: true,
             email: true,
-            created_at: true, 
+            created_at: true,
+             
             
         }
     })

@@ -1,10 +1,12 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from 'bcrypt'
-
-
+import bcrypt from "bcrypt";
+import dotenv from "dotenv/config"
+import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 const prisma = new PrismaClient();
 const router = Router();
+const { TOKEN } = process.env
 
 router.post("/login", async (req, res) => {
   try {
@@ -14,22 +16,27 @@ router.post("/login", async (req, res) => {
       },
     });
     if (!userLogin) {
-        return res.status(404).json({mensagem:"usuario nao encontrado"})
+      return res.status(404).json({ mensagem: "usuario nao encontrado" });
     }
-    const hash = userLogin.senha_hash
-    const certeza = await bcrypt.compare(req.body.senha, hash)
-    if(!certeza){
-        return res.status(404).json({mensagem: "credencias nao batem"})
+    const hash = userLogin.senha_hash;
+    const certeza = await bcrypt.compare(req.body.senha, hash);
+    if (!certeza) {
+      return res.status(404).json({ mensagem: "credencias nao batem" });
     }
-    return res.status(200).json({mensagem: "usuario logado"})
-
-
-
+    console.log('a')
+    const token = jwt.sign(
+      { nome: userLogin.nome, email: userLogin.email },
+      TOKEN,
+      {
+        expiresIn: "14m",
+      },
+    );
+    return res.status(200).json({ mensagem: `usuario com o email ${userLogin.email} logado com muito sucesso! `});
   } catch (error) {
-    return res.status(500).json({erro: [{
-        error_code: error.code,
-        error_menssage: error.menssage
-    }]})
+    throw error
+    return res.status(500).json({
+      erro: error
+    });
   }
 });
 

@@ -24,7 +24,8 @@ import routerUser from './routes/login/getUsers.js'
 import routerChat from './routes/chat.router.js'
 import routerCadastro from './routes/login/cadUser.js'
 import routerLogin from './routes/login/login.js'
-
+import routerHeath from './routes/healthCheck.js'
+import routerFInd from './routes/login/getThatUser.js'
 
 /* aura 67 express necessidades */
 const app = express();
@@ -42,10 +43,8 @@ app.use('/', routerChat)
 app.use('/', routerUser)
 app.use('/', routerCadastro)
 app.use('/', routerLogin)
-app.get('/health', (req, res) => {
-  return res.status(200).json({Saude:"Donde estas cr7????? cr7 donde estaaaas"})
-})
-
+app.use('/', routerHeath)
+app.use('/', routerFInd)
 
 app.listen($PORT, () => {
     console.log('********************************************************************')

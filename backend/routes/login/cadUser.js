@@ -8,16 +8,16 @@ const prisma = new PrismaClient();
 router.post("/cadastro", async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
-    const hash = await bcrypt.hash(cadUser.senha, 10);
+    const hash = await bcrypt.hash(senha, 10);
     const emailEx = await prisma.usuarios.findUnique({
         where: {
-            email: cadUser.email
+            email: email
         }
     })
     if(emailEx){
         return res.status(409).json({mensagem: 'email existe'})
     }
-    if(!cadUser.nome || !cadUser.email || !cadUser.senha){
+    if(!nome || !email || !senha){
         return res.status(406).json({mensagem: "todos os campos são obrigatorios!!!"})
     }
     const newUser = await prisma.usuarios.create({
@@ -26,12 +26,17 @@ router.post("/cadastro", async (req, res) => {
         email: email,
         senha_hash: hash,
       },
+      select: {
+        nome: true,
+        email: true,
+        created_at: true
+      }
     });
 
 
-    return res.status(201).json(cadUser);
+
+    return res.status(201).json(newUser);
   } catch (error) {
-   
     return res.status(409).json({erro: [{
         status: error?.code,
         error: error.menssage
