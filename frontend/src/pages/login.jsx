@@ -5,9 +5,9 @@ import CampLogin
 const Login = ({ children, Darkmode }) => {
 
     return(
-        <article className="flex w-lvw h-lvh p-5 bg-fundo-login">
-          <CampLogin className="w-1/2"
-          />  
+        <article className="flex w-lvw h-lvh  bg-fundo-login justify-between">
+          <CampLogin className="w-1/2 flex justify-center m-auto"
+          />
           <div className="w-1/2 bg-black"></div>
         </article>
     )

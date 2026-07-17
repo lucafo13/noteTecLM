@@ -1,4 +1,5 @@
 import { MdOutlineMail, MdKey } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const InputsLogin = () => {
     const inputClass = "flex bg-input-bg rounded-lg text-white p-4 w-[543px] items-center gap-2"
@@ -9,7 +10,7 @@ const InputsLogin = () => {
         <div className={inputClass}>
           <MdOutlineMail className="text-3xl "/>
           <input
-          className="outline-none"
+          className="outline-none w-full relative h-full"
             type="email"
             name="email"
             placeholder="seuemail@seuserviço.com"
@@ -29,9 +30,14 @@ const InputsLogin = () => {
             id="senha"
           />
         </div>
+        <br />
+        <div className="text-end">
+
+        <Link to="/home" className="decoration-solid text-primary">Esqueceu sua senha?</Link>
+        </div>
       </div>
     </article>
-  );
+  ); 
 };
 
 
