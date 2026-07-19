@@ -25,12 +25,18 @@ router.post("/login", async (req, res) => {
     }
     console.log('a')
     const token = jwt.sign(
-      { nome: userLogin.nome, email: userLogin.email },
+      {id: userLogin.id, nome: userLogin.nome, email: userLogin.email },
       TOKEN,
       {
         expiresIn: "14m",
       },
     );
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 14 * 60 * 1000
+    })
     return res.status(200).json({ mensagem: `usuario com o email ${userLogin.email} logado com muito sucesso! `});
   } catch (error) {
     throw error

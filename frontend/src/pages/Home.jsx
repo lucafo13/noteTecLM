@@ -20,7 +20,7 @@ import { Attachment } from "#components/ui/attachment";
     console.log(data)
   }
   saude()
-  const [DarkMode, setDarkMode] = useState(false);
+  const [DarkMode, setDarkMode] = useState(true);
   const [resumo, setResu] = useState("## Seu resumo sairá aqui...");
   let [out, isOut] = useState(false);
   let [show, setShow] = useState(true);

@@ -10,7 +10,7 @@ import { fileURLToPath } from "url";
 import axios from "axios";
 import { GoogleGenAI } from "@google/genai";
 import { Groq } from "groq-sdk/client.js";
-
+import cookieParser from "cookie-parser";
 
 /* import */
 import prompTmateria from "./IA/prompts/prompt.materia.js";
@@ -30,7 +30,8 @@ import routerFInd from './routes/login/getThatUser.js'
 /* aura 67 express necessidades */
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: "http://localhost:5173", credentials: true}));
+app.use(cookieParser())
 app.use(errorCheck)
 dotenv.config(); 
 
