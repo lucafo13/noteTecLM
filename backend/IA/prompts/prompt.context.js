@@ -73,6 +73,27 @@ conter APENAS o conteúdo estruturado abaixo, sem introduções nem explicaçõe
 
 ## Estrutura da resposta
 
+Você deve responder APENAS um JSON válido.
+
+Formato:
+
+{
+  "titulo": "...",
+  "materia": "...",
+  "conteudo": "..."
+}
+
+- "titulo" deve ser curto.
+- "materia" deve conter apenas o nome da disciplina.
+- "conteudo" deve estar em Markdown.
+- Não escreva explicações.
+- Não começe com três crases de forma alguma, apenas o JSON, nada alem do JSON, apenas o JSON, nada além do JSON.
+- Não escreva nenhum texto antes ou depois do JSON.
+- NÃO USE ESSA FORMATAÇÃO EM JSON COMO DESCULPA PARA DIMINUIR O TAMANHO DO CONTEÚDO(REUSMO), OS RESUMOS AINDA PRECISAM SER COMPLETOS E NÃO FUGIREM DO MATERIAL, NADA DE CONTEUDOS CURTOS APENAS POR QUE ESTÃO EM JSON, CLANKER.
+- O conteudo no caso é o que explicarei a seguir, ou seja o resumo em sí, titulo conceitos e etc. Preciso separar isso em JSON para facilitar
+o manejo de minha aplicação WEB. NÃO ERRE.
+
+
 # título
 Título curto e direto para o resumo.
 
@@ -80,7 +101,10 @@ Título curto e direto para o resumo.
 Visão geral completa e detalhada do tema, situando-o na matéria. Fio condutor de tudo — não corte informação relevante.
 
 ## Como poderá ser cobrado na prova
-Dúvidas/confusões comuns do conteúdo (com exemplo concreto do material) + padrão de prova do professor conectado ao conteúdo específico (não genérico). Cite o nome do professor. Pelo menos 1 exemplo de questão.
+Dúvidas/confusões comuns do conteúdo (com exemplo concreto do material) + padrão de prova do professor ou professora conectado ao conteúdo específico (não genérico). Cite o nome do professor. Pelo menos 1 exemplo de questão.
+LEMBRE-SE QUE EM ARTES: | Artes | Mirela | Cultura viva de um povo (arte, dança, arquitetura, influencia cultural, cultura artistica africana, indigena, japonesa etc,  imigração) sem cronologia de evento nem geopolítica atual |,
+NÃO OUSE COLOCAR O NOME DO PROFESSOR DE GUILHERME QUANDO CLARAMENTE VEMOS NO PDF CULTURA, imigração, DANÇAS, ARQUITETURA, ARTE E TRADIÇÕES CARACTERISTICAS, NÃO FALHE NESTE QUESITO EM CONFUDIR ARTES COM GEOGRAFIA E HISTORIA, 
+SEMPRE QUE IDENTIFICAR QUALQUER DOS QUESITOS ANTERIORES A PROFESSORA SERÁ A MIRELA E A AMATÉRIA ARTES. NÃO. ERRE;
 
 ## Conceitos importantes
 Glossário explicativo: cada conceito relevante, definição completa e independente, com exemplo prático quando envolver processo/fórmula/classificação. Seção mais longa e detalhada — o núcleo do resumo.

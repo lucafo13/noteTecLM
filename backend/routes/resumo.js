@@ -23,10 +23,10 @@ router.post("/resu", upload.single("file"), async (req, res) => {
 
     const resposta =  await reqIa(promptCompleto, resul);
     console.log('2')
-    res.status(200).json({ texto: resposta, PDF: resul });
+    res.status(200).json(resposta);
     console.log('3')
   } catch (error) {
-    throw error
+
     return res.status(409).json({error: error})
   }
 });

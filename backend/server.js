@@ -26,6 +26,7 @@ import routerCadastro from './routes/login/cadUser.js'
 import routerLogin from './routes/login/login.js'
 import routerHeath from './routes/healthCheck.js'
 import routerFInd from './routes/login/getThatUser.js'
+import routerMe from './routes/login/me.js'
 
 /* aura 67 express necessidades */
 const app = express();
@@ -46,6 +47,7 @@ app.use('/', routerCadastro)
 app.use('/', routerLogin)
 app.use('/', routerHeath)
 app.use('/', routerFInd)
+app.use('/', routerMe)
 
 app.listen($PORT, () => {
     console.log('********************************************************************')

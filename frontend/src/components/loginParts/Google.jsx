@@ -20,7 +20,7 @@ const Google = () => {
       </div>
       <br />
       <div className="text-center">
-        <Link to={'/home'} className="text-primary">Ou crie sua conta aqui</Link>
+        <Link to={'/Cadastro'} className="text-primary">Ou crie sua conta aqui</Link>
       </div>
     </div>
   );
