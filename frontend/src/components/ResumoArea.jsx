@@ -16,6 +16,7 @@ import { Button } from "@base-ui/react/button";
 import ChatBTN from "./loginParts/ChatBTN";
 
 export const ResumoArea = ({ DarkMode, resumo, out, isOut, fchar }) => {
+  console.log(resumo)  
   const DarkModeColor = DarkMode ? "text-white" : "text-black";
 
   const baseAr = !DarkMode ? 
@@ -26,6 +27,7 @@ export const ResumoArea = ({ DarkMode, resumo, out, isOut, fchar }) => {
       console.log("out");
     } else {
       isOut(false);
+    
     }
   };
   return (
@@ -55,7 +57,7 @@ export const ResumoArea = ({ DarkMode, resumo, out, isOut, fchar }) => {
             ? " w-11/12 p-2 overflow-y-auto wrap-break-word  prose-invert prose max-w-none"
             : "w-11/12 p-2 overflow-y-auto wrap-break-word  prose max-w-none"}>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{resumo}</ReactMarkdown>
-        {resumo !== "## Seu resumo sairá aqui..." || resumo !== null || resumo !== "" ?  <ChatBTN text={"Converse sobre esse resumo"}/> : <div></div>}
+        {resumo !== "## Seu resumo sairá aqui..." || resumo !== null || resumo !== "" || resumo.length > 50 ?  <ChatBTN text={"Converse sobre esse resumo"}/> : <div></div>}
       </div>
   </article>
   );

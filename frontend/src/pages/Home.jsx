@@ -10,16 +10,17 @@ import { ResumoArea } from "#components/ResumoArea";
 import { IoChevronBack } from "react-icons/io5";
 import axios from "axios";
 import { Attachment } from "#components/ui/attachment";
+import { useEffect } from "react";
 
- const Home = () => {
+const Home = () => {
+  useEffect(() => {
+    const saude = async () => {
+      const { data } = await axios.get("http://localhost:3000/health");
+      console.log(data);
+    };
+    saude();
+  }, []);
 
-
-
-  const saude = async () => {
-    const { data } = await axios.get('http://localhost:3000/health')
-    console.log(data)
-  }
-  saude()
   const [DarkMode, setDarkMode] = useState(true);
   const [resumo, setResu] = useState("## Seu resumo sairá aqui...");
   let [out, isOut] = useState(false);
@@ -34,7 +35,6 @@ import { Attachment } from "#components/ui/attachment";
             : "flex-1 p-8 bg-background-dark flex flex-col"
         }
       >
-        
         <Header DarkMode={DarkMode} setDarkMode={setDarkMode} />
         <div className="flex flex-row flex-1 overflow-hidden">
           <Hero
@@ -73,7 +73,6 @@ import { Attachment } from "#components/ui/attachment";
               <IoChevronBack size={22} />
             </button>
           )}
-        
         </div>
       </main>
     </div>

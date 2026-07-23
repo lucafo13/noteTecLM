@@ -1,5 +1,6 @@
-import { Groq } from "groq-sdk/client.js";
+  import { Groq } from "groq-sdk/client.js";
 import dotenv from "dotenv/config";
+import { promptJson } from "./prompts/prompt.json.js";
 
 const IA = new Groq({ apiKey: process.env.GROQAPI });
 export const reqIa = async (promptCompleto, resul) => {
@@ -7,16 +8,18 @@ export const reqIa = async (promptCompleto, resul) => {
     const iaResponde = await IA.chat.completions.create({
       model: "llama-3.3-70b-versatile",
       max_tokens: 3500,
-      response_format: { type: "json_object" },
+      // response_format: { type: "json_object" },
       messages: [
         { role: "system", content: `${promptCompleto}` },
         { role: "user", content: resul },
       ],
     });
 
-    const bruto = iaResponde.choices[0].message.content;
+    const resposta = iaResponde.choices[0].message.content;
+  
+  
 
-    const resposta = JSON.parse(bruto);
+  
     return resposta;
   } catch (error) {
     console.error("Erro na chamada à IA (reqIa):", error?.message || error);
@@ -39,3 +42,22 @@ export const chatIA = async (material, promptChat, histo) => {
   const respostaChat = iaResponde.choices[0].message.content;
   return respostaChat;
 };
+
+export const jsonIa = async (resumo) => {
+  const iaResponde = await IA.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+
+    response_format:{type: "json_object"},
+    messages: [
+      {role: "system",
+        content: promptJson
+      },
+      {role: 'user',
+        content: resumo
+      }
+    ]
+
+  })
+  const respostaJson = JSON.parse(iaResponde.choices[0].message.content);
+  return respostaJson
+}

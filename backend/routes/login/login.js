@@ -28,7 +28,7 @@ router.post("/login", async (req, res) => {
       {id: userLogin.id, nome: userLogin.nome, email: userLogin.email },
       TOKEN,
       {
-        expiresIn:"58m"
+        expiresIn:"1 day"
       
       },
     );
@@ -40,6 +40,7 @@ router.post("/login", async (req, res) => {
     })
     return res.status(200).json({ mensagem: `usuario com o email ${userLogin.email} logado com muito sucesso! `});
   } catch (error) {
+    console.log(error.message)
   
     return res.status(500).json({
       erro: error

@@ -9,7 +9,7 @@ import Cadastro from './pages/Cadastro'
   const navigate = useNavigate()
   return(<>
     <Routes>
-      <Route path='/' action={navigate('/Cadastro')}/>
+      <Route path='/' element={<Navigate to={'/Cadastro'} replace/>} />
       <Route path='/home' element={<Home />}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/Cadastro' element={<Cadastro/>}/>

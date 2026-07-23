@@ -8,8 +8,22 @@ import { toast } from "sonner";
 import { data, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Markdown from "react-markdown";
+import { useEffect } from "react";
 
 const Hero = ({ DarkMode, resumo, setResu, out }) => {
+  useEffect(() => {
+    const me = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:3000/me", {
+          withCredentials: true,
+        });
+        SetNome(data.usuario.nome);
+        await Notification.requestPermission();
+      } catch (error) {}
+    };
+    me();
+    console.log(Notification.permission);
+  }, []);
   const alinaI = "flex items-center gap-3";
   const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
@@ -17,22 +31,8 @@ const Hero = ({ DarkMode, resumo, setResu, out }) => {
   const [car, setCar] = useState(false);
   const [pdf, setPdf] = useState(null);
   const [err, serER] = useState(false);
-  const navigate = useNavigate()
-  const me = async () => {
-  try {
-    const { data } = await axios.get("http://localhost:3000/me", {
-      withCredentials: true,
-    });
-    SetNome(data.usuario.nome);
-    await Notification.requestPermission();
-    
-  } catch (error) {
-    
-  }
+  const navigate = useNavigate();
 
-  };
-  me();
-  console.log(Notification.permission);
   let men = "Nada ainda...";
   let uploadTexto = "";
   // file?.name
@@ -105,15 +105,17 @@ w-full
       const res = await axios.post("http://localhost:3000/resu", formData, {
         withCredentials: true,
       });
-      const resultado = res.data
-      console.log(res.status)
-      setResu(resultado.conteudo);
-      setPdf(resultado.conteudo);
+      const resultado = res.data;
+      console.log(res.status);
+      setResu(resultado);
+      setPdf(resultado);
       // console.log(res.data.texto);
       // baixa(res.data.texto);
-      console.log(resultado)
-      setResu(resultado.conteudo);
+      
+      setResu(resultado);
       serER(false);
+      const jsonRes = await axios.post("http://localhost:3000/json",  {resumo: resultado}, {withCredentials: true})
+      console.log(jsonRes.data)
       toast.success("Resumo concluido", {
         description: "Veja seu resumo na aba de resumos",
       });
@@ -125,7 +127,7 @@ w-full
       }
     } catch (error) {
       serER(true);
-      console.log(error)
+      console.log(error);
       toast.error("Limite estourado");
       return;
     } finally {

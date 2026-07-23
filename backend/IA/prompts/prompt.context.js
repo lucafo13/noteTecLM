@@ -73,27 +73,6 @@ conter APENAS o conteúdo estruturado abaixo, sem introduções nem explicaçõe
 
 ## Estrutura da resposta
 
-Você deve responder APENAS um JSON válido.
-
-Formato:
-
-{
-  "titulo": "...",
-  "materia": "...",
-  "conteudo": "..."
-}
-
-- "titulo" deve ser curto.
-- "materia" deve conter apenas o nome da disciplina.
-- "conteudo" deve estar em Markdown.
-- Não escreva explicações.
-- Não começe com três crases de forma alguma, apenas o JSON, nada alem do JSON, apenas o JSON, nada além do JSON.
-- Não escreva nenhum texto antes ou depois do JSON.
-- NÃO USE ESSA FORMATAÇÃO EM JSON COMO DESCULPA PARA DIMINUIR O TAMANHO DO CONTEÚDO(REUSMO), OS RESUMOS AINDA PRECISAM SER COMPLETOS E NÃO FUGIREM DO MATERIAL, NADA DE CONTEUDOS CURTOS APENAS POR QUE ESTÃO EM JSON, CLANKER.
-- O conteudo no caso é o que explicarei a seguir, ou seja o resumo em sí, titulo conceitos e etc. Preciso separar isso em JSON para facilitar
-o manejo de minha aplicação WEB. NÃO ERRE.
-
-
 # título
 Título curto e direto para o resumo.
 
