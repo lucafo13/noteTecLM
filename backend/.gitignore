@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
+/routes/login/cripter.js
 /generated/prisma
