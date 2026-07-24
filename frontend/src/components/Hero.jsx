@@ -11,6 +11,7 @@ import Markdown from "react-markdown";
 import { useEffect } from "react";
 import { resumoSchema } from "../../schemas/auth.resumo";
 import { cadSchena } from "../../schemas/auth.schema";
+import { int } from "zod";
 
 const Hero = ({ DarkMode, resumo, setResu, out }) => {
   useEffect(() => {
@@ -21,13 +22,17 @@ const Hero = ({ DarkMode, resumo, setResu, out }) => {
         });
         SetNome(data.usuario.nome);
         console.log(data.usuario.id)
-        setId(data.id)
+        setId(data.usuario.id)
         await Notification.requestPermission();
-      } catch (error) {}
+      } catch (error) {
+        toast.error("Faça login novamente")
+        navigate('/login')
+      }
     };
     me();
     console.log(Notification.permission);
   }, []);
+  
   const alinaI = "flex items-center gap-3";
   const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
@@ -132,11 +137,11 @@ w-full
       const jsonRes = await axios.post("http://localhost:3000/json",  {resumo: resultado}, {withCredentials: true})
       console.log(jsonRes.data)
       const Json = jsonRes.data;
-      const finalJson = new Resumo(Json.titulo, Json.materia, resultado, file.name, id)
+      const finalJson = new Resumo(Json.titulo, Json.materia, resultado, arquivo.name, id)
       console.log(finalJson)
       const auth = resumoSchema.safeParse(finalJson)
       if(!auth.success){
-        toast.error("erro: ", auth.error.issues[0].message)
+        toast.error(`erro:  ${auth.error.issues[0].message}`)
         return
       }
       const cadResu = await axios.post("http://localhost:3000/cadResu", finalJson, {withCredentials: true})

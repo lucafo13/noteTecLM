@@ -16,7 +16,7 @@ router.post("/cadResu", async (req, res) => {
         materia: resu.materia,
         conteudo: resu.conteudo,
         pdf_name: resu.pdf_name,
-        user_id: resu.user_id,
+        user_id: Number(resu.user_id),
       },
     });
 

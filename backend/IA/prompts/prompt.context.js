@@ -82,7 +82,7 @@ Visão geral completa e detalhada do tema, situando-o na matéria. Fio condutor 
 ## Como poderá ser cobrado na prova
 Dúvidas/confusões comuns do conteúdo (com exemplo concreto do material) + padrão de prova do professor ou professora conectado ao conteúdo específico (não genérico). Cite o nome do professor. Pelo menos 1 exemplo de questão.
 LEMBRE-SE QUE EM ARTES: | Artes | Mirela | Cultura viva de um povo (arte, dança, arquitetura, influencia cultural, cultura artistica africana, indigena, japonesa etc,  imigração) sem cronologia de evento nem geopolítica atual |,
-NÃO OUSE COLOCAR O NOME DO PROFESSOR DE GUILHERME QUANDO CLARAMENTE VEMOS NO PDF CULTURA, imigração, DANÇAS, ARQUITETURA, ARTE E TRADIÇÕES CARACTERISTICAS, NÃO FALHE NESTE QUESITO EM CONFUDIR ARTES COM GEOGRAFIA E HISTORIA, 
+NÃO OUSE COLOCAR O NOME DO PROFESSOR DE GUILHERME QUANDO CLARAMENTE VEMOS NO PDF CULTURA, IMIGRAÇÃO DE QUALQUER POVO SEJA ALEMÃO OU ETC, DANÇAS, ARQUITETURA, ARTE E TRADIÇÕES CARACTERISTICAS, NÃO FALHE NESTE QUESITO EM CONFUDIR ARTES COM GEOGRAFIA E HISTORIA, 
 SEMPRE QUE IDENTIFICAR QUALQUER DOS QUESITOS ANTERIORES A PROFESSORA SERÁ A MIRELA E A AMATÉRIA ARTES. NÃO. ERRE;
 
 ## Conceitos importantes

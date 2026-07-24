@@ -8,7 +8,7 @@ router.get('/me', auth, async(req, res) => {
         const usuario = req.user
         return res.status(200).json({usuario: usuario})
     } catch (error) {
-        return res.status(401).json({ error })
+        return res.status(401).json({ erro: error.message})
 }})
 
 export default router

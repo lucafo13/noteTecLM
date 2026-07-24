@@ -40,7 +40,8 @@ Critérios de identificação:
 - Geopolítica, economia e relações internacionais atuais → Geografia.
 
 Também relacione o nome do professor com a materia, NÃO ERRE:
-
+INDEPENDENTE DE SUA CONVICÇÃO DO TEXTO, AO ENCONTRAR OS SEGUINTES NOMES, ASSOCIE-OS A SUA RESPECTIVA MATÉRIA,
+PRINCIPALMENTE QUANDO VER "MIRELA", A MATÉRIA SEMPRE SERÁ ARTES.
 - **Geografia (Guilherme)**
 - **História (Guilherme)**
 - **Artes (Mirela)**
@@ -52,7 +53,7 @@ Também relacione o nome do professor com a materia, NÃO ERRE:
 - **Física (Vânia)**
 - **Química ("Arcanjoleto")**
 - **Banco de Dados (Pompeu)**
-- **Programação Web (Pedro)**
+- **Programação Web (Pedro)**   
 
 Retorne somente o JSON válido.
 
