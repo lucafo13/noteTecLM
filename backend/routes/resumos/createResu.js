@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PrimsaClient, Prisma, PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -7,11 +7,7 @@ const prisma = new PrismaClient();
 router.post("/cadResu", async (req, res) => {
   try {
     const resu = req.body;
-    const findR = await prisma.resumos.findUnique({
-      where: {
-        conteudo: resu.conteudo,
-      },
-    });
+ 
 
 
     const createR = await prisma.resumos.create({
@@ -24,10 +20,13 @@ router.post("/cadResu", async (req, res) => {
       },
     });
 
-    return res.status(201).json({ mensagem: "Resumo cadastrado com sucesso" });
+    return res.status(201).json({ mensagem: "Resumo cadastrado com sucesso", createR });
   } catch (error) {
+    console.log(error?.message)
     return res
       .status(400)
       .json({ mensagem: "não foi possivel realizar o cadastro do resumo" });
   }
 });
+
+export default router

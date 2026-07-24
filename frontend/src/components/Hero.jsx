@@ -9,6 +9,8 @@ import { data, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Markdown from "react-markdown";
 import { useEffect } from "react";
+import { resumoSchema } from "../../schemas/auth.resumo";
+import { cadSchena } from "../../schemas/auth.schema";
 
 const Hero = ({ DarkMode, resumo, setResu, out }) => {
   useEffect(() => {
@@ -18,6 +20,8 @@ const Hero = ({ DarkMode, resumo, setResu, out }) => {
           withCredentials: true,
         });
         SetNome(data.usuario.nome);
+        console.log(data.usuario.id)
+        setId(data.id)
         await Notification.requestPermission();
       } catch (error) {}
     };
@@ -27,11 +31,22 @@ const Hero = ({ DarkMode, resumo, setResu, out }) => {
   const alinaI = "flex items-center gap-3";
   const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
+  
   const [dragano, Tadragano] = useState(false);
   const [car, setCar] = useState(false);
   const [pdf, setPdf] = useState(null);
   const [err, serER] = useState(false);
   const navigate = useNavigate();
+  let [id, setId] = useState()
+  class Resumo{
+    constructor(titulo, materia, conteudo, pdf_name, user_id){
+      this.titulo = titulo;
+      this.materia = materia;
+      this.conteudo = conteudo;
+      this.pdf_name = pdf_name;
+      this.user_id = user_id  
+    }
+  }
 
   let men = "Nada ainda...";
   let uploadTexto = "";
@@ -116,6 +131,16 @@ w-full
       serER(false);
       const jsonRes = await axios.post("http://localhost:3000/json",  {resumo: resultado}, {withCredentials: true})
       console.log(jsonRes.data)
+      const Json = jsonRes.data;
+      const finalJson = new Resumo(Json.titulo, Json.materia, resultado, file.name, id)
+      console.log(finalJson)
+      const auth = resumoSchema.safeParse(finalJson)
+      if(!auth.success){
+        toast.error("erro: ", auth.error.issues[0].message)
+        return
+      }
+      const cadResu = await axios.post("http://localhost:3000/cadResu", finalJson, {withCredentials: true})
+      console.log(cadResu.data)
       toast.success("Resumo concluido", {
         description: "Veja seu resumo na aba de resumos",
       });
@@ -127,7 +152,7 @@ w-full
       }
     } catch (error) {
       serER(true);
-      console.log(error);
+      console.log(error.message);
       toast.error("Limite estourado");
       return;
     } finally {

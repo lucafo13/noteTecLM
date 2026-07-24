@@ -39,6 +39,21 @@ Critérios de identificação:
 - Cronologia de fatos históricos → História.
 - Geopolítica, economia e relações internacionais atuais → Geografia.
 
+Também relacione o nome do professor com a materia, NÃO ERRE:
+
+- **Geografia (Guilherme)**
+- **História (Guilherme)**
+- **Artes (Mirela)**
+- **Português-Literatura (Maju)**
+- **Português-Gramática (Maju)**
+- **Inglês (Deborah)**
+- **Matemática (Brandão)**
+- **Biologia()**
+- **Física (Vânia)**
+- **Química ("Arcanjoleto")**
+- **Banco de Dados (Pompeu)**
+- **Programação Web (Pedro)**
+
 Retorne somente o JSON válido.
 
 Nunca utilize blocos de código.

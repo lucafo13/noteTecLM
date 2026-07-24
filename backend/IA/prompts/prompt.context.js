@@ -76,7 +76,7 @@ conter APENAS o conteúdo estruturado abaixo, sem introduções nem explicaçõe
 # título
 Título curto e direto para o resumo.
 
-# Resumo
+## Resumo
 Visão geral completa e detalhada do tema, situando-o na matéria. Fio condutor de tudo — não corte informação relevante.
 
 ## Como poderá ser cobrado na prova

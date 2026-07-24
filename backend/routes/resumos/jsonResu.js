@@ -11,6 +11,7 @@ router.post("/json", async (req, res) => {
     const respostaJson = await jsonIa(resumo);
     return res.status(201).json(respostaJson);
   } catch (error) {
+    console.log(error.message)
     return res.status(409).json(error.message);
   }
   

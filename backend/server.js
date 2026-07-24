@@ -28,6 +28,7 @@ import routerHeath from './routes/healthCheck.js'
 import routerFInd from './routes/login/getThatUser.js'
 import routerMe from './routes/login/me.js'
 import routerJson from './routes/resumos/jsonResu.js'
+import routeresu from './routes/resumos/createResu.js'
 
 /* aura 67 express necessidades */
 const app = express();
@@ -50,6 +51,7 @@ app.use('/', routerHeath)
 app.use('/', routerFInd)
 app.use('/', routerMe)
 app.use('/', routerJson)
+app.use('/', routeresu)
 
 app.listen($PORT, () => {
     console.log('********************************************************************')
