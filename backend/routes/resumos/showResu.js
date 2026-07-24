@@ -1,37 +1,35 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
+import auth from "../../middleware/auth.js";
 
 const router = Router();
-const primsa = new PrismaClient();
+const prisma = new PrismaClient();
 
-router.get("/resumos/:id", async (req, res) => {
+router.get("/resumos", auth, async (req, res) => {
   try {
-    const userid = req.params.id;
-    const usuario = await primsa.usuarios.findUnique({
+    const usuario = req.user;
+    const resumos = await prisma.resumos.findMany({
       where: {
-        id: Number(userid),
+        user_id: Number(usuario.id),
       },
     });
-    if (!usuario) {
-      return res.status(404).json({ mensagem: "Usuario não encontrado" });
+    if (!resumos) {
+      return res.status(404).json({ mensagem: "O usuario não possui resumos" });
     }
-    const resumos = await primsa.resumos.findMany({
+    const contResu = await prisma.resumos.count({
       where: {
-        user_id: Number(userid),
+        user_id: Number(usuario.id),
       },
     });
-    if(!resumos){
-        return res.status(404).json({mensagem: "O usuario não possui resumos"})
-    }
-    const contResu = await primsa.resumos.count({
-        where: {
-            user_id: Number(userid)
-        }
-    })
     return res.status(200).json({resumos: resumos, quantidade: contResu})
   } catch (error) {
-    console.log(error?.message)
-    return res.status(404).json({erro: error?.message, mensagem: "Não foi possivel realizar a ação"})
+    console.log(error?.message);
+    return res
+      .status(404)
+      .json({
+        erro: error?.message,
+        mensagem: "Não foi possivel realizar a ação",
+      });
   }
 });
 

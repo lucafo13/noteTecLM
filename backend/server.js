@@ -29,6 +29,7 @@ import routerFInd from './routes/login/getThatUser.js'
 import routerMe from './routes/login/me.js'
 import routerJson from './routes/resumos/jsonResu.js'
 import routeresu from './routes/resumos/createResu.js'
+import routerFindUniqueR from './routes/resumos/showThatResu.js'
 import routerFindResu from './routes/resumos/showResu.js'
 /* aura 67 express necessidades */
 const app = express();
@@ -53,6 +54,7 @@ app.use('/', routerMe)
 app.use('/', routerJson)
 app.use('/', routeresu)
 app.use('/', routerFindResu)
+app.use('/', routerFindUniqueR)
 
 app.listen($PORT, () => {
     console.log('********************************************************************')

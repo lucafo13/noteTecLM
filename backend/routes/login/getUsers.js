@@ -14,7 +14,7 @@ router.get('/users', async (req, res) => {
             nome: true,
             email: true,
             created_at: true,
-             
+            
             
         }
     })
