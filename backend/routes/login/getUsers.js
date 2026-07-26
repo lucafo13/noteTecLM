@@ -14,8 +14,14 @@ router.get('/users', async (req, res) => {
             nome: true,
             email: true,
             created_at: true,
+            resumos: true
             
             
+        }
+    })
+    const resumos = await prisma.resumos.findMany({
+        select: {
+            mensagens: true
         }
     })
     return res.status(200).json(pessoas)

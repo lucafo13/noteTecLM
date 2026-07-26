@@ -15,7 +15,7 @@ import {
 import { Button } from "@base-ui/react/button";
 import ChatBTN from "./loginParts/ChatBTN";
 
-export const ResumoArea = ({ DarkMode, resumo, out, isOut, fchar }) => {
+export const ResumoArea = ({ DarkMode, resumo, out, isOut, fchar, evento }) => {
   console.log(resumo);
   const DarkModeColor = DarkMode ? "text-white" : "text-black";
 
@@ -68,7 +68,7 @@ export const ResumoArea = ({ DarkMode, resumo, out, isOut, fchar }) => {
         {resumo &&
         resumo !== "## Seu resumo sairá aqui..." &&
         resumo.trim().length > 50 ? (
-          <ChatBTN text={"Converse sobre esse resumo"} />
+          <ChatBTN event={evento} text={"Converse sobre esse resumo"} />
         ) : (
           <div />
         )}

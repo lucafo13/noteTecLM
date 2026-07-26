@@ -25,6 +25,7 @@ const Home = () => {
   const [resumo, setResu] = useState("## Seu resumo sairá aqui...");
   let [out, isOut] = useState(false);
   let [show, setShow] = useState(true);
+  let [evento, setEvento] = useState(null)
   return (
     <div className="flex max-h-screen">
       <SideBar DarkMode={DarkMode} />
@@ -42,9 +43,12 @@ const Home = () => {
             resumo={resumo}
             setResu={setResu}
             out={out}
+            evento={evento}
+            setEvento={setEvento}
           />
           {show && (
             <ResumoArea
+              evento={evento}
               resumo={resumo}
               DarkMode={DarkMode}
               out={out}

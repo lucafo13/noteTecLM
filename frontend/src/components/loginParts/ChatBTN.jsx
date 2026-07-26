@@ -1,4 +1,6 @@
+import { Navigate, useNavigate } from "react-router-dom";
 const ChatBTN = ({ event, text }) => {
+  const navigate = useNavigate()
   return (
     <>
       <br />

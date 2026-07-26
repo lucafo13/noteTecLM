@@ -13,7 +13,7 @@ import { resumoSchema } from "../../schemas/auth.resumo";
 import { cadSchena } from "../../schemas/auth.schema";
 import { int } from "zod";
 
-const Hero = ({ DarkMode, resumo, setResu, out }) => {
+const Hero = ({ DarkMode, resumo, setResu, out, evento, setEvento }) => {
   useEffect(() => {
     const me = async () => {
       try {
@@ -21,35 +21,34 @@ const Hero = ({ DarkMode, resumo, setResu, out }) => {
           withCredentials: true,
         });
         SetNome(data.usuario.nome);
-        console.log(data.usuario.id)
-        setId(data.usuario.id)
+        console.log(data.usuario.id);
+        setId(data.usuario.id);
         await Notification.requestPermission();
       } catch (error) {
-        toast.error("Faça login novamente")
-        navigate('/login')
+        toast.error("Faça login novamente");
+        navigate("/login");
       }
     };
     me();
     console.log(Notification.permission);
   }, []);
-  
   const alinaI = "flex items-center gap-3";
   const [Nome, SetNome] = useState("Aluno");
   const [file, setFile] = useState(null);
-  
+
   const [dragano, Tadragano] = useState(false);
   const [car, setCar] = useState(false);
   const [pdf, setPdf] = useState(null);
   const [err, serER] = useState(false);
   const navigate = useNavigate();
-  let [id, setId] = useState()
-  class Resumo{
-    constructor(titulo, materia, conteudo, pdf_name, user_id){
+  let [id, setId] = useState();
+  class Resumo {
+    constructor(titulo, materia, conteudo, pdf_name, user_id) {
       this.titulo = titulo;
       this.materia = materia;
       this.conteudo = conteudo;
       this.pdf_name = pdf_name;
-      this.user_id = user_id  
+      this.user_id = user_id;
     }
   }
 
@@ -127,25 +126,44 @@ w-full
       });
       const resultado = res.data;
       console.log(res.status);
-      setResu(resultado);
+
       setPdf(resultado);
       // console.log(res.data.texto);
       // baixa(res.data.texto);
-      
-      setResu(resultado);
+
       serER(false);
-      const jsonRes = await axios.post("http://localhost:3000/json",  {resumo: resultado}, {withCredentials: true})
-      console.log(jsonRes.data)
+      const jsonRes = await axios.post(
+        "http://localhost:3000/json",
+        { resumo: resultado },
+        { withCredentials: true },
+      );
+      console.log(jsonRes.data);
       const Json = jsonRes.data;
-      const finalJson = new Resumo(Json.titulo, Json.materia, resultado, arquivo.name, id)
-      console.log(finalJson)
-      const auth = resumoSchema.safeParse(finalJson)
-      if(!auth.success){
-        toast.error(`erro:  ${auth.error.issues[0].message}`)
-        return
+      const finalJson = new Resumo(
+        Json.titulo,
+        Json.materia,
+        resultado,
+        arquivo.name,
+        id,
+      );
+      console.log(finalJson);
+      const auth = resumoSchema.safeParse(finalJson);
+      if (!auth.success) {
+        toast.error(`erro:  ${auth.error.issues[0].message}`);
+        return;
       }
-      const cadResu = await axios.post("http://localhost:3000/cadResu", finalJson, {withCredentials: true})
-      console.log(cadResu.data)
+      const cadResu = await axios.post(
+        "http://localhost:3000/cadResu",
+        finalJson,
+        { withCredentials: true },
+      );
+
+      const navChat = () => {
+        navigate(`/chat/${cadResu.data.createR.id}`);
+      };
+      console.log(cadResu.data);
+      setResu(resultado);
+      setEvento(() => navChat);
       toast.success("Resumo concluido", {
         description: "Veja seu resumo na aba de resumos",
       });
