@@ -1,9 +1,8 @@
 {
-  "rootDirectory": "frontend",
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://noteteclm.onrender.com"
+      "destination": "https://noteteclm.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
