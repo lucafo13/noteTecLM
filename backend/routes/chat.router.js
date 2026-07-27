@@ -16,7 +16,7 @@ router.post('/chat', async (req, res) => {
             data: {
                 role: "User",
                 content: ultimaMen.menssage,
-                resumo_id: req.body.resumo_id,
+                resumo_id: Number(req.body.resumo_id),
             }
         })
         const respostaChat = await chatIA(req.body.resumo, promptChat, historico)
@@ -24,7 +24,7 @@ router.post('/chat', async (req, res) => {
             data: {
                 role: "Ia",
                 content: respostaChat,
-                resumo_id: req.body.resumo_id
+                resumo_id: Number(req.body.resumo_id)
             }
         })
         res.status(200).json({resposta: respostaChat, criados: [menDb, iaMenDb]})
