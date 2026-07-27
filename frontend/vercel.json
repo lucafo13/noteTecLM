@@ -1,12 +1,11 @@
 {
-  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "https://noteteclm.onrender.com/api/:path*"
     },
     {
-      "source": "/((?!api|assets|favicon.ico).*)",
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ]
