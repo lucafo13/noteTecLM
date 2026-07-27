@@ -1,6 +1,6 @@
-import App from "./App.jsx";
+import App from "./app.jsx";
 import reactDom from 'react-dom/client';
-import './App.css';
+
 import { StrictMode } from "react";
 import './index.css';
 import 'react-icons';
