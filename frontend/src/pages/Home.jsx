@@ -15,7 +15,7 @@ import { useEffect } from "react";
 const Home = () => {
   useEffect(() => {
     const saude = async () => {
-      const { data } = await axios.get("https://noteteclm.onrender.com/health");
+      const { data } = await axios.get("https://noteteclm.onrender.com/health", {withCredentials: true});
       console.log(data);
     };
     saude();
