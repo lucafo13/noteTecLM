@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CampLogin
- from "#components/campLogin";
+ from "#components/CampLogin";
 import LoginImg from "@/assets/login.jpg"
 
 const Login = ({ children, Darkmode }) => {
