@@ -28,10 +28,10 @@ const CampLogin = () => {
       return;
     }
     try {
-      const resposta = await axios.post("http://localhost:3000/login", req, {
+      const resposta = await axios.post("https://noteteclm.onrender.com/login", req, {
         withCredentials: true,
       });
-      const { data } = await axios.get("http://localhost:3000/me", {
+      const { data } = await axios.get("https://noteteclm.onrender.com/me", {
         withCredentials: true,
       });
       console.log(data);

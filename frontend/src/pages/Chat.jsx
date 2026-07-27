@@ -10,7 +10,7 @@ import axios from "axios";
 const Chat = () => {
   useEffect(() => {
     const saude = async () => {
-      const { data } = await axios.get("http://localhost:3000/health");
+      const { data } = await axios.get("https://noteteclm.onrender.com/health");
       console.log(data);
     };
     saude();

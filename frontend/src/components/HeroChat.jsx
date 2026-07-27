@@ -53,7 +53,7 @@ const HeroChat = ({ resumo, setResumo }) => {
       console.log(newHisto)
       setSend("")
       const req = new historiClass(id, resumo, newHisto);
-      const res = await axios.post("http://localhost:3000/chat", req, {
+      const res = await axios.post("https://noteteclm.onrender.com/chat", req, {
         withCredentials: true,
       });
       const resposta = res.data?.resposta || "Deu pau e não foi"
@@ -72,7 +72,7 @@ const HeroChat = ({ resumo, setResumo }) => {
     const getResumo = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/resumos/${id}`,
+          `https://noteteclm.onrender.com/resumos/${id}`,
           { withCredentials: true },
         );
         console.log(data);

@@ -44,7 +44,7 @@ const CampCadastro = () => {
     }
     try {
 
-      const resposta = await axios.post("http://localhost:3000/cadastro", req, {
+      const resposta = await axios.post("https://noteteclm.onrender.com/cadastro", req, {
         withCredentials: true,
       });
 

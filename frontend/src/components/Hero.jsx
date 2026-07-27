@@ -17,7 +17,7 @@ const Hero = ({ DarkMode, resumo, setResu, out, evento, setEvento }) => {
   useEffect(() => {
     const me = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/me", {
+        const { data } = await axios.get("https://noteteclm.onrender.com/me", {
           withCredentials: true,
         });
         SetNome(data.usuario.nome);
@@ -121,7 +121,7 @@ w-full
     formData.append("file", arquivo);
 
     try {
-      const res = await axios.post("http://localhost:3000/resu", formData, {
+      const res = await axios.post("https://noteteclm.onrender.com/resu", formData, {
         withCredentials: true,
       });
       const resultado = res.data;
@@ -133,7 +133,7 @@ w-full
 
       serER(false);
       const jsonRes = await axios.post(
-        "http://localhost:3000/json",
+        "https://noteteclm.onrender.com/json",
         { resumo: resultado },
         { withCredentials: true },
       );
@@ -153,7 +153,7 @@ w-full
         return;
       }
       const cadResu = await axios.post(
-        "http://localhost:3000/cadResu",
+        "https://noteteclm.onrender.com/cadResu",
         finalJson,
         { withCredentials: true },
       );
