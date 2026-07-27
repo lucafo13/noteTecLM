@@ -31,13 +31,11 @@ const CampLogin = () => {
       const resposta = await axios.post("https://noteteclm.onrender.com/login", req, {
         withCredentials: true,
       });
-      const { data } = await axios.get("https://noteteclm.onrender.com/me", {
-        withCredentials: true,
-      });
-      console.log(data);
+   
+    
       console.log(resposta.status)
       toast.success("login realizado", {
-        description: `ola ${data.usuario.nome}`,
+        description: `ola !!!`,
       });
 
       console.log(req);
