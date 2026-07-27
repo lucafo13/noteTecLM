@@ -34,7 +34,7 @@ import routerFindResu from './routes/resumos/showResu.js'
 /* aura 67 express necessidades */
 const app = express();
 app.use(express.json());
-app.use(cors({origin:[ "https://noteteclm.vercel.app/", "http://localhost:5173" ], credentials: true}));
+app.use(cors({origin:[ "https://noteteclm.vercel.app", "http://localhost:5173" ], credentials: true}));
 app.use(cookieParser())
 app.use(errorCheck)
 dotenv.config(); 
