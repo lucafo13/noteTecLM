@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-import Res from "../components/Res";
-import Navbar from "../components/Navbar";
-import Base from "../components/Base/Base";
 import SideBar from "../components/SideBar";
 import Hero from "../components/Hero";
 import Header from "../components/Header";

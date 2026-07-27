@@ -5,8 +5,8 @@
       "destination": "https://noteteclm.onrender.com/api/:path*"
     },
     {
-      "source": "/:path*",
-      "destination": "/"
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ]
 }
