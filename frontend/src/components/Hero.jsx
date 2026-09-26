@@ -175,7 +175,7 @@ w-full
       }
     } catch (error) {
       serER(true);
-      console.log(error.message);
+      console.log(error);
       toast.error("Limite estourado");
       return;
     } finally {

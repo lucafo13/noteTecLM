@@ -6,7 +6,7 @@ const IA = new Groq({ apiKey: process.env.GROQAPI });
 export const reqIa = async (promptCompleto, resul) => {
   try {
     const iaResponde = await IA.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       max_tokens: 3500,
       // response_format: { type: "json_object" },
       messages: [
@@ -32,7 +32,7 @@ export const chatIA = async (resumo, promptChat, historico) => {
       content: msg.menssage,
     }));
     const iaResponde = await IA.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       max_tokens: 3500,
       messages: [
         {
@@ -51,7 +51,7 @@ export const chatIA = async (resumo, promptChat, historico) => {
 
 export const jsonIa = async (resumo) => {
   const iaResponde = await IA.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-120b",
 
     response_format: { type: "json_object" },
     messages: [
