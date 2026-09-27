@@ -8,6 +8,7 @@ import { GrSend } from "react-icons/gr";
 import { toast } from "sonner";
 import { Bubble, BubbleGroup, BubbleContent } from "./ui/bubble";
 const HeroChat = ({ resumo, setResumo }) => {
+    
   const bottom = useRef(null)
   
   const { id } = useParams();
@@ -57,6 +58,13 @@ const HeroChat = ({ resumo, setResumo }) => {
         withCredentials: true,
       });
       const resposta = res.data?.resposta || "Deu pau e não foi"
+      if(Notification.permission === 'granted'){
+        new Notification("NoteTec te respondeu", {
+          body: resposta,
+          icon: "/favicon.svg"
+        }
+        )
+      }
       console.log(resposta);
       SetMenssage([...newHisto, {
         key: "Ia",
